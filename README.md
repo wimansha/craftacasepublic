@@ -43,6 +43,7 @@ Present ACCLibNavigationController instance with an Artwork image.
 UIImage *image = [UIImage imageNamed:@"Artwork"];
 ACCLibNavigationController *viewController = [[ACCLibNavigationController alloc] initWithImage:image];
 viewController.libNavigationControllerDelegate = self;
+[self presentViewController:viewController animated:YES completion:nil];
 ```
 Add following "Exception Domains" to "App Transport Security Settings" in info.Plist
 
