@@ -11,14 +11,82 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
+works on iOS 8+
+
 ## Installation
 
 CraftacasePublic is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+it, simply add the following lines to your Podfile:
 
 ```ruby
+source 'https://github.com/wimansha/wimansha-podspecs'
 pod "CraftacasePublic"
 ```
+
+## Add New Pod Repo
+
+```ruby
+pod repo add wimansha-podspecs https://github.com/wimansha/wimansha-podspecs.git
+```
+
+## Usage
+
+Import craftacasepublic.h
+
+```objective-c
+#import <craftacasepublic/craftacasepublic.h>
+```
+
+Present ACCLibNavigationController instance with an Artwork image.
+
+```objective-c
+UIImage *image = [UIImage imageNamed:@"Artwork"];
+ACCLibNavigationController *viewController = [[ACCLibNavigationController alloc] initWithImage:image];
+viewController.libNavigationControllerDelegate = self;
+[self presentViewController:viewController animated:YES completion:nil];
+```
+Add following "Exception Domains" to "App Transport Security Settings" in info.Plist
+
+craftacase.com, akamaihd.net, facebook.com, fbcdn.net
+
+```xml
+<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>akamaihd.net</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+				<false/>
+			</dict>
+			<key>craftacase.com</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+				<false/>
+			</dict>
+			<key>facebook.com</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+				<false/>
+			</dict>
+			<key>fbcdn.net</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+				<false/>
+			</dict>
+		</dict>
+	</dict>
+  ```
 
 ## Author
 
